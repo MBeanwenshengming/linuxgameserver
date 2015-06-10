@@ -51,12 +51,6 @@ public:
 
 	int GetCurrentExistCount();
 	
-	void GetCurrentReadAndWriteIndex(int& nReadIndex, int& nWriteIndex);
-	void ClearContent();
-	char* GetBuf();
-	void SetReadIndex(int nReadIndex);
-	int GetMaxItemCount();
-
 public:
 	E_Circle_Error LookUpOneItem(char* pbuf, size_t sbufSize);
 	E_Circle_Error DeleteOneItemAtHead();

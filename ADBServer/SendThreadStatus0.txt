@@ -1,0 +1,32 @@
+Current Send Work Item Count:0, FreePacketCount:0
+Current Send Thread Local Free Packet Pool Desc
+	BufLen:128, ItemCount:0
+	BufLen:256, ItemCount:0
+	BufLen:512, ItemCount:0
+	BufLen:1024, ItemCount:0
+	BufLen:2048, ItemCount:0
+	BufLen:4096, ItemCount:0
+Current Send Work Item Count:0, FreePacketCount:0
+Current Send Thread Local Free Packet Pool Desc
+	BufLen:128, ItemCount:0
+	BufLen:256, ItemCount:0
+	BufLen:512, ItemCount:0
+	BufLen:1024, ItemCount:0
+	BufLen:2048, ItemCount:0
+	BufLen:4096, ItemCount:0
+Current Send Work Item Count:0, FreePacketCount:0
+Current Send Thread Local Free Packet Pool Desc
+	BufLen:128, ItemCount:0
+	BufLen:256, ItemCount:0
+	BufLen:512, ItemCount:0
+	BufLen:1024, ItemCount:0
+	BufLen:2048, ItemCount:0
+	BufLen:4096, ItemCount:0
+Current Send Work Item Count:0, FreePacketCount:0
+Current Send Thread Local Free Packet Pool Desc
+	BufLen:128, ItemCount:0
+	BufLen:256, ItemCount:0
+	BufLen:512, ItemCount:0
+	BufLen:1024, ItemCount:0
+	BufLen:2048, ItemCount:0
+	BufLen:4096, ItemCount:0

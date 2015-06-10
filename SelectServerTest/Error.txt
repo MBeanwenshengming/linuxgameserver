@@ -1,0 +1,3 @@
+LSelectServer::Initialize, InitializeConnectWorkManagerThreadManager Failed 
+LListenSocket::Initialized, Bind Failed
+LSelectServer::Initialize, !Initialized(tssp.pszIp, tssp.usPort)

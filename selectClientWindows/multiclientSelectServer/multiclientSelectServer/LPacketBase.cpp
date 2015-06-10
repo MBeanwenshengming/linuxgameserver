@@ -23,7 +23,7 @@ THE SOFTWARE.
 */
 
 #include "LPacketBase.h"
-#include "CRC32.h"
+
 
 LPacketBase::LPacketBase(unsigned short usBufLen) : m_usPacketBufLen(usBufLen) 
 { 	
@@ -505,35 +505,10 @@ bool LPacketBase::DirectSetData(char* pData, unsigned short usDataLen)
 	return true;
 }
 
-
+#ifdef __EPOLL_TEST_STATISTIC__
 void LPacketBase::FillPacketForTest()
 {
 	*((unsigned short*)m_pData) = m_usPacketBufLen - 1;
 	memset(m_pData + sizeof(unsigned short), 'F',  m_usPacketBufLen - sizeof(unsigned short) - 1);
 }
-
-
-int LPacketBase::MakeCRC32CodeToPacket()
-{
-	unsigned short usPacketDataLen = *((unsigned short*)m_pData);
-	if (usPacketDataLen + sizeof(unsigned long) > m_usPacketBufLen)
-	{
-		return -1;
-	}
-	*((unsigned short*)m_pData) = usPacketDataLen + sizeof(unsigned long);
-
-
-	unsigned long ulCRC32Code = crc32(0, m_pData, usPacketDataLen);
-	memcpy(m_pData + usPacketDataLen, &ulCRC32Code, sizeof(ulCRC32Code));
-	return 0;
-}
-bool LPacketBase::CheckCRC32Code()
-{
-	unsigned long ulCRC32Code = crc32(0, m_pData, this->GetPacketDataAndHeaderLen() - sizeof(unsigned long));
-	unsigned long ulCRC32CodeSource = *((unsigned long*)(m_pData + this->GetPacketDataAndHeaderLen() - sizeof(unsigned long)));
-	if (ulCRC32Code != ulCRC32CodeSource)
-	{
-		return false;
-	}
-	return true;
-}
+#endif

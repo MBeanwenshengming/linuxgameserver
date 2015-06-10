@@ -93,7 +93,7 @@ int main(int nargc, char* argv[])
 	ssmlt.SetSelectServer(&SelectServerInstance);
 
 	if (!ssmlt.Start())
-	{        
+	{
 		return -8;
 	}
 	if (!SelectServerInstance.Start())
@@ -101,9 +101,9 @@ int main(int nargc, char* argv[])
 		return -8;
 	}
 #ifndef __SELECT_SERVER__
-	for (int i = 0; i < 500; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
-		SelectServerInstance.AddOneConnectWork("192.168.1.2", 12000, true);
+		SelectServerInstance.AddOneConnectWork("127.0.0.1", 6000, true);
 	}
 #endif
 

@@ -83,29 +83,34 @@ int LConnectorTest::ThreadDoing(void* pParam)
 
 		if (pPacket != NULL)
 		{
+
 			if (pPacket->GetPacketType() == 1)
 			{
 				printf("Server Connectted\n");
 			}
 			else
 			{
+				if (!pPacket->CheckCRC32Code())
+				{
+					printf("Packet Receive CrC32Code Error\n");
+				}
 				//	处理接收的数据包
-				int nDataLen = pPacket->GetDataLen() - sizeof(int);
+				//int nDataLen = pPacket->GetDataLen() - sizeof(int);
 				//	printf("%hd, %s\n", pPacket->GetPacketDataAndHeaderLen(), pPacket->GetBuf());
-				printf("Recv:%s\n", pPacket->GetDataBuf() + sizeof(int));
-				bool bFinded = false;
-				for (int i = 0; i < g_globalCount; ++i)
-				{
-					if (nDataLen == g_narrLen[i])
-					{
-						bFinded = true;
-						break;
-					}
-				}
-				if (!bFinded)
-				{
-					printf("not found\n");
-				}
+				printf("Recv:%s\n", pPacket->GetDataBuf());
+//				bool bFinded = false;
+//				for (int i = 0; i < g_globalCount; ++i)
+//				{
+//					if (nDataLen == g_narrLen[i])
+//					{
+//						bFinded = true;
+//						break;
+//					}
+//				}
+//				if (!bFinded)
+//				{
+//					printf("not found\n");
+//				}
 			}
 			//	回收处理完的数据包
 			m_Connector.FreePacket(pPacket); 
@@ -126,7 +131,7 @@ int LConnectorTest::ThreadDoing(void* pParam)
 			int nDataLen = strlen(pGlobalStatus[nSelectedIndex]);
 
 			LPacketSingle* pPacketForSend = NULL;
-			pPacketForSend = m_Connector.GetOneSendPacketPool(nDataLen + sizeof(unsigned short));
+			pPacketForSend = m_Connector.GetOneSendPacketPool(nDataLen + sizeof(unsigned short) + sizeof(unsigned long));
 			if (pPacketForSend == NULL)
 			{
 				printf("pPacketForSend == NULL\n");
@@ -134,13 +139,14 @@ int LConnectorTest::ThreadDoing(void* pParam)
 			}
 			pPacketForSend->Reset();
 			pPacketForSend->AddData(pGlobalStatus[nSelectedIndex], nDataLen);
+			pPacketForSend->MakeCRC32CodeToPacket();
 
 			if (!m_Connector.AddOneSendPacket(pPacketForSend))
 			{
 				printf("!m_Connector.AddOneSendPacket Failed\n");
 				return -1;
 			}
-			printf("Send:%s\n", pPacketForSend->GetDataBuf() + sizeof(int));
+			printf("Send:%s\n", pPacketForSend->GetDataBuf());
 			m_tLastSendData = tNow;
 		}
 	}

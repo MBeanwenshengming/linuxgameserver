@@ -31,7 +31,6 @@ THE SOFTWARE.
 #include <time.h>
 using namespace std;
 class LSelectServer;
-class LPacketSingle;
 
 typedef struct _Session_Info
 {
@@ -60,7 +59,6 @@ public:
 	void OnSessionDisconnect(unsigned int unSessionID);
 public:
 	void SetSelectServer(LSelectServer* pSelectServer);
-	void BuildRandomPacket(LPacketSingle* pPacket);
 private:
 	LSelectServer* m_pSelectServer;
 	map<unsigned int, t_Session_Info> m_mapSessionConnected;

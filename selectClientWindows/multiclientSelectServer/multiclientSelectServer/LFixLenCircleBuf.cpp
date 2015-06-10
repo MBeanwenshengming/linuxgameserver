@@ -482,39 +482,6 @@ int LFixLenCircleBuf::GetCurrentExistCount()
 		return m_sMaxItemCount - nReadIndex + nWriteIndex;
 	}
 }
-void LFixLenCircleBuf::GetCurrentReadAndWriteIndex(int& nReadIndex, int& nWriteIndex)
-{
-	nReadIndex 		= m_ReadIndex;
-	nWriteIndex 	= m_WriteIndex;
-}
-void LFixLenCircleBuf::ClearContent()
-{
-#ifndef WIN32
-	__sync_lock_test_and_set(&m_ReadIndex, 0);
-	__sync_lock_test_and_set(&m_WriteIndex, 0);
-#else
-	InterlockedExchange(&m_ReadIndex, 0); 
-	InterlockedExchange(&m_WriteIndex, 0); 
-#endif
-	
-}
-
-char* LFixLenCircleBuf::GetBuf()
-{
-	return m_pbuf;
-}
-void LFixLenCircleBuf::SetReadIndex(int nReadIndex)
-{
-#ifndef WIN32
-	__sync_lock_test_and_set(&m_ReadIndex, nReadIndex);
-#else
-	InterlockedExchange(&m_ReadIndex, nReadIndex); 
-#endif
-}
-int LFixLenCircleBuf::GetMaxItemCount()
-{
-	return (int)m_sMaxItemCount;
-}
 
 E_Circle_Error LFixLenCircleBuf::LookUpOneItem(char* pbuf, size_t sbufSize)
 {

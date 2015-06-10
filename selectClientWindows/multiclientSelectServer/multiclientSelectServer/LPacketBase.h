@@ -110,9 +110,6 @@ public:
 
 	unsigned short GetPacketDataAndHeaderLen();
 
-	//	CRC32
-	int MakeCRC32CodeToPacket();
-	bool CheckCRC32Code();
 
 private:
 	const unsigned short m_usPacketBufLen;	
@@ -135,9 +132,9 @@ private:
 public:
 	unsigned int GetPacketID();
 	void SetPacketID(unsigned int unPacketID);
-
+#ifdef __EPOLL_TEST_STATISTIC__
 	void FillPacketForTest();
-
+#endif
 private:
 };
 #endif
