@@ -1,0 +1,34 @@
+SOURCES = $(wildcard *.cpp) 
+OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES)) 
+CPPDEBUGFLAGS = -Di386 -g
+CPPRELEASEFLAGS = -Di386 -o2
+LinkFlagsD = -lpthread -pg -g 
+LinkFlags = -lpthread -o2
+
+OBJECTSDIR = ./OBJ/
+BINDIRDEBUG = ./DEBUGBIN/
+BINDIRRELEASE = ./BIN/
+All:libNetWork.a
+
+
+%.d:%.cpp 
+	@set -e; \
+	rm -f $@; \
+	g++ -M $(CPPDEBUGFLAGS) $< > $@.$$$$; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+	rm -f $@.$$$$  
+
+sinclude $(SOURCES:.cpp=.d)
+
+libNetWork.a:$(OBJECTS)
+	@set -e; \
+	rm -f $@; \
+	ar rcs libNetWork.a $(OBJECTS)
+
+%.o:%.cpp 
+	@echo $(join $*,.cpp Building) 
+	@g++ -o $@ -c $< $(CPPDEBUGFLAGS) 
+	
+clean:
+	rm -f *.o *.d libNetWork.a
+

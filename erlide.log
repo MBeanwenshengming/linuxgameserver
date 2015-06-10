@@ -1,0 +1,24 @@
+14:56:42,023 I: (ErlangCore.java:66) : Starting CORE Thread[Worker-4,5,main]
+14:56:42,045 I: (ErlangCore.java:75) : *** starting Erlide v0.29.5.201410031059 (core=0.24.10.201410031059) (model api=0.24.11.201410031059) *** (GBK) 
+14:56:42,073 I: (ErlangCore.java:82) : Started CORE
+14:56:42,073 F: (ErlangPlugin.java:88) : Core started
+14:56:48,397 F: (ErlangHostnameRetriever.java:40) : Test long hostname: wenshengming-PC.Home
+14:56:49,588 W: (ErlangHostnameRetriever.java:46) : Can't use wenshengming-PC.Home as long name
+14:56:49,862 F: (ErlangHostnameRetriever.java:40) : Test long hostname: 192.168.1.3
+14:56:50,899 W: (ErlangHostnameRetriever.java:46) : Can't use 192.168.1.3 as long name
+14:56:51,191 F: (ErlangHostnameRetriever.java:40) : Test short hostname: wenshengming-PC
+14:56:51,206 F: (HostnameUtils.java:74) : Detected:: wenshengming-PC && null
+14:56:51,315 F: (BackendActivator.java:25) : Backend plugin started
+14:56:51,315 I: (ErlideUIPlugin.java:130) : Starting UI Thread[Worker-4,5,main]
+14:56:51,331 F: (ModelActivator.java:19) : Starting Erlang model api
+14:56:51,362 F: (BackendFactory.java:43) : Create ide backend 17.3.0
+14:56:51,362 F: (BackendFactory.java:57) : Create backend 256e5_wenshengming_95dca2_erlide
+14:56:51,783 F: (ManagedOtpNodeProxy.java:62) : START node :> ["c:\program files\erl6.2/bin/erl", -sname, 256e5_wenshengming_95dca2_erlide@wenshengming-PC, -setcookie, erlide] *** E:\gameserverlinux
+14:56:51,783 F: (OtpNodeProxy.java:309) : Runtime 256e5_wenshengming_95dca2_erlide@wenshengming-PC starting
+14:56:51,815 F: (OtpNodeProxy.java:214) : 256e5_wenshengming_95dca2_erlide@wenshengming-PC: waiting connection to peer... 
+14:56:52,345 F: (OtpNodeProxy.java:314) : Runtime 256e5_wenshengming_95dca2_erlide@wenshengming-PC running
+14:56:52,813 F: (LogEventHandler.java:27) : info: {"Monitoring java node",'jerlide_795de57@wenshengming-PC'}
+14:56:52,844 F: (LogEventHandler.java:27) : info: {"Start monitor process: ",10000000,50000000}
+14:56:52,891 F: (ModelActivator.java:30) : Started model api
+14:56:53,094 I: (ErlideUIPlugin.java:152) : Started UI
+15:26:33,087 F: (OtpNodeProxy.java:279) : Runtime 256e5_wenshengming_95dca2_erlide@wenshengming-PC terminated
